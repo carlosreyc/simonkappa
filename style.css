@@ -1,3 +1,6 @@
+*{
+  font-family: 'Lato', sans-serif;
+}
 .container {
   display: flex;
   align-content: center;
@@ -28,62 +31,73 @@ h1 {
 
 .container-bottom {
   display: flex;
-  width: 20vw;
-  height: 20vh;
+  max-width: 300px;
+  max-height: 250px  ;
   align-content: center;
   justify-content: center;
   margin: 0 auto;
   position: relative;
-  border: 2px solid goldenrod;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
 }
 .display {
   width: 50px;
   height: 40px;
   background: #000;
-  position: absolute;
-    left: 4px;
-    top: 0;
   border-radius: 10px;
-
 
 }
 div.display + p {
   color: rgb(182, 23, 52);
-  position: absolute;
-  top: 24px;
-
-  left: 10px;
+  line-height: 0%;
+  text-align: center;
 }
 .start-btn {
   border: 1px solid #000;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
   background: rgb(182, 23, 52);
+  top: 0;
+  right: 16px;
   position: absolute;
-  left: 77px;
-  top: 5px;
+}
+div.start-btn + p {
+line-height: 174%;
+text-align: center;
 }
 .strict-btn {
   border: 1px solid #000;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
   background: rgb(235, 255, 0);
+  top: 0;
+  right: 16px;
   position: absolute;
-  top: 5px;
-  left: 129px;
+
 }
-  .wrapper {
-    position: relative;
-  }
+div.strict-btn + p {
+  line-height: 174%;
+  text-align: center;
+}
+
 .on-off {
+  flex-grow: 1;
+  flex-basis: 500px;
+  align-items: center;
   position: absolute;
-  top: 78px;
-  left: -26px;
+  top: 108px;
+  left: 128px;
+  border: 2px solid goldenrod;  
 }
 
-
+.wrapper {
+  width: 52px;
+  line-height: normal;
+  position: relative;
+}
 
 
 
