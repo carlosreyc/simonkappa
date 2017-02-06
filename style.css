@@ -1,0 +1,156 @@
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 40vh
+}
+.color {
+
+  width: 200px;
+  height: 200px;
+  flex-basis: 200px;
+  align-self: center;
+  border: 1px solid #000;
+}
+h1 {
+  text-align: center;
+}
+
+.blue   {background: rgba(96, 182, 252, 0.5)}
+.red    {background: rgba(215, 9, 75,0.5)}
+.green  {background: rgba(13, 223, 141,0.5)}
+.yellow {background: rgba(232, 241, 61,0.5)}
+
+.blue:hover {background: rgb(96, 182, 252)}
+.red:hover  {background: rgb(215,9,75)}
+.green:hover {background: rgb(13,223,141)}
+.yellow:hover {background: rgb(232,241,61)}
+
+.container-bottom {
+  display: flex;
+  width: 20vw;
+  height: 20vh;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  border: 2px solid goldenrod;
+}
+.display {
+  width: 50px;
+  height: 40px;
+  background: #000;
+  position: absolute;
+    left: 4px;
+    top: 0;
+  border-radius: 10px;
+
+
+}
+div.display + p {
+  color: rgb(182, 23, 52);
+  position: absolute;
+  top: 24px;
+
+  left: 10px;
+}
+.start-btn {
+  border: 1px solid #000;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: rgb(182, 23, 52);
+  position: absolute;
+  left: 77px;
+  top: 5px;
+}
+.strict-btn {
+  border: 1px solid #000;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: rgb(235, 255, 0);
+  position: absolute;
+  top: 5px;
+  left: 129px;
+}
+  .wrapper {
+    position: relative;
+  }
+.on-off {
+  position: absolute;
+  top: 78px;
+  left: -26px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*Switch css*/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  /*background-color: #2196F3;*/
+  background-color: #000;
+}
+
+input:focus + .slider {
+  /*box-shadow: 0 0 1px #2196F3;*/
+  box-shadow: 0 0 1px #000;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
