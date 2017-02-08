@@ -24,10 +24,10 @@ h1 {
 .green  {background: rgba(13, 223, 141,0.5)}
 .yellow {background: rgba(232, 241, 61,0.5)}
 
-.blue:hover {background: rgb(96, 182, 252)}
-.red:hover  {background: rgb(215,9,75)}
-.green:hover {background: rgb(13,223,141)}
-.yellow:hover {background: rgb(232,241,61)}
+.hover-blue {background: rgb(96, 182, 252)}
+.hover-red  {background: rgb(215,9,75)}
+ .hover-green {background: rgb(13,223,141)}
+.hover-yellow {background: rgb(232,241,61)}
 
 .container-bottom {
   display: flex;
@@ -46,7 +46,10 @@ h1 {
   height: 40px;
   background: #000;
   border-radius: 10px;
-
+  color: #fff;
+  text-align: center;
+  line-height: 200%;
+  font-size: 18px;
 }
 div.display + p {
   color: rgb(182, 23, 52);
@@ -62,6 +65,7 @@ div.display + p {
   top: 0;
   right: 16px;
   position: absolute;
+  cursor: pointer;
 }
 div.start-btn + p {
 line-height: 174%;
@@ -76,7 +80,7 @@ text-align: center;
   top: 0;
   right: 16px;
   position: absolute;
-
+  cursor: pointer;
 }
 div.strict-btn + p {
   line-height: 174%;
@@ -90,7 +94,7 @@ div.strict-btn + p {
   position: absolute;
   top: 108px;
   left: 128px;
-  border: 2px solid goldenrod;  
+
 }
 
 .wrapper {

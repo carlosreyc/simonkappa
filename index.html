@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simon Kappa</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="dep/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dep/sweetalert.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -14,7 +16,7 @@
 
 <body>
     <h1>Simon Game</h1>
-    <div class="container">
+    <div class="container" id="simonContainer">
 
         <div class="color red" id="red"> </div>
         <div class="color blue" id="blue"> </div>
@@ -23,21 +25,21 @@
     </div>
     <div class="container-bottom">
         <div class="wrapper">
-            <div class="display"></div>
+            <div class="display" id="display"></div>
             <p>Count</p>
         </div>
         <div class="wrapper">
-            <div class="start-btn"></div>
+            <div class="start-btn" id="start"></div>
             <p>Start</p>
         </div>
         <div class="wrapper">
-            <div class="strict-btn"></div>
+            <div class="strict-btn" id="strict"></div>
             <p>Strict</p>
         </div>
         <!--   Switch button   -->
 
-        <div class="on-off">
-            <label class="switch">
+        <div class="on-off" >
+            <label class="switch" id="on-off">
         <input type="checkbox">
         <div class="slider round"></div>
         </label>
@@ -46,7 +48,7 @@
 
     </div>
     <script src="script.js"></script>
-
+    
 </body>
 
 </html>
