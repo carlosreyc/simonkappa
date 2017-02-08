@@ -52,7 +52,7 @@ function logic() {
 	    	if(i >= gameMoves.length) {
 	    	clearInterval(interval)
 	    }
-      },100)
+      },800)
 	    playerMoves = []
 
 	}
@@ -64,8 +64,7 @@ function normalChecker(tileName) {
 }
 function playerTurn(tile) {
 	
-	console.log(gameMoves)
-	console.log(playerMoves)
+
 		if(gameMoves[gameMoves.length - 1] !== playerMoves[playerMoves.length - 1]) {
 	   // if(JSON.stringify(gameMoves) !== JSON.stringify(playerMoves)) {
 		if(strictMode) {
