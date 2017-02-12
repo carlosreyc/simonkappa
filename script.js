@@ -5,6 +5,7 @@ var simon = {
 	currentGame: [],
 	player: [],
 	strict: false,
+	status: document.getElementById('status'),
 	sound: {
 	red : new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
 	blue : new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
@@ -25,6 +26,7 @@ function newGame() {
 
 function displayRound() {
 	var displayEL = document.getElementById('display')
+	
 	simon.round++
 	displayEL.innerHTML = simon.round
 	generateMove()
@@ -60,6 +62,7 @@ function playGame(tile) {
 
 function userClick(id) {
 	simon.player.push(id)
+	playGame(id)
 	sound(id)
 	playerTurn(id)
 }
@@ -88,8 +91,11 @@ function playerTurn(x) {
 			// alert('Intentalo de nuevo desde el principio')
 			newGame()
 		} else {
-			 alert('Te equivocaste, intentalo de nuevo')
-			showMoves()
+/*			 alert('Te equivocaste, intentalo de nuevo')
+			showMoves()*/
+			simon.status.innerText = 'Incorrecto'
+			setTimeout(function(){simon.status.innerText = ''},1000)
+			setTimeout(showMoves(),100)
 		}
 	} else {
 
@@ -97,10 +103,12 @@ function playerTurn(x) {
 		var check = simon.player.length === simon.currentGame.length
 		if(check) {
 			if(simon.round == 20) {
-				 alert	('Ganaste')
+				 simon.status.innerText = 'Ganaste'
+				 setTimeout(function(){simon.status.innerText = ''},3000)
 				 setTimeout(newGame(),3000)
 			} else {
-
+				simon.status.innerText = 'Sig. nivel'
+				setTimeout(function(){simon.status.innerText = ''},500)
 				setTimeout(displayRound(),500)
 			}
 		}
@@ -128,3 +136,6 @@ document.getElementById('start').addEventListener('click',function(){
 	newGame()
 })
 newGame()
+
+// document.getElementById('status').innerHTML = ''
+console.log(simon.status)

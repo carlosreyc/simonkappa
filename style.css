@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 *{
   font-family: 'Lato', sans-serif;
 }
@@ -6,7 +6,11 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  height: 40vh
+  max-width: 420px;
+  min-height: 420px;
+  margin: 0 auto;
+  flex-wrap: wrap;  
+  position: relative;
 }
 .color {
 
@@ -23,22 +27,45 @@ p {
 h1 {
   text-align: center;
 }
-.oculto {display: none}
+.status {
+  z-index: 1;
+  position: absolute;
+  top: 200px;
+  right: 175px;
+  width: 80px;
+  height: 25px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 5px;
+  text-align: center;
+  }
 
-.blue   {background: rgba(96, 182, 252, 0.5)}
-.red    {background: rgba(215, 9, 75,0.5)}
-.green  {background: rgba(13, 223, 141,0.5)}
-.yellow {background: rgba(232, 241, 61,0.5)}
+.blue   {
+  background: rgba(96, 182, 252, 0.5);
+  border-top-right-radius: 200px;
+  }
+.red    {
+  background: rgba(215, 9, 75,0.5);
+  border-top-left-radius: 200px;
+  }
+.green  {
+  background: rgba(13, 223, 141,0.5);
+  border-bottom-right-radius: 200px;
+  }
+.yellow {
+  background: rgba(232, 241, 61,0.5);
+  border-bottom-left-radius: 200px;
+  }
 
 .hover-blue {background: rgb(96, 182, 252)}
 .hover-red  {background: rgb(215,9,75)}
  .hover-green {background: rgb(13,223,141)}
 .hover-yellow {background: rgb(232,241,61)}
 
-.blue:hover {background: rgb(96, 182, 252)}
+/*.blue:hover {background: rgb(96, 182, 252)}
 .red:hover  {background: rgb(215,9,75)}
  .green:hover {background: rgb(13,223,141)}
-.yellow:hover {background: rgb(232,241,61)}
+.yellow:hover {background: rgb(232,241,61)}*/
 
 .container-bottom {
   display: flex;
@@ -50,6 +77,7 @@ h1 {
   position: relative;
   flex-wrap: wrap;
   align-items: flex-start;
+
 
 }
 .display {
