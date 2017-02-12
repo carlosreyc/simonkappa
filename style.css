@@ -143,14 +143,30 @@ div.strict-btn + p {
 }
 
 /*For devices max width 500px*/
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 500px) {
 .color {
 
-  width: 100px;
-  height: 100px;
-  flex-basis: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  flex-basis: 200px;
   align-self: center;
-  border: 1px solid #000;
+  border: 2 px solid #000;
+}
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  max-width: 300px;
+  min-height: 300px;
+  margin: 0 auto;
+  flex-wrap: wrap;  
+  position: relative;
+  border: 2px solid goldenrod;
+}
+.status {
+  position: absolute;
+  top: 137px;
+  right: 111px;
 }
 }
 
