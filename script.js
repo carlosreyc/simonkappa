@@ -1,157 +1,130 @@
-var count = 0,
-	poolColors = ['red','blue','yellow','green'],
-	gameMoves = [],
-	playerMoves = [],
-	strictMode = false,
-	start = false,
-	displayEl = document.getElementById('display'),
-	redSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
-	blueSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
-	yellowSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
-	greenSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
-	no = new Audio('sound/no.mp3'),
-	win = new Audio('sound/win.mp3')
 
-function animateTiles(tile) {
-	// Ilumina cada 0.8 segundos el cuadrado correspondiente al argumento
-	var tileElement = document.getElementById(tile)
-	tileElement.classList.add('hover-' + tile)
-	window[tile +'Sound'].play()
-	setTimeout(function() {
-		tileElement.classList.remove('hover-' + tile)
-	},800)
-
-}
-
-function newGame() {
-	count = 0,
-	gameMoves = [],
-	playerMoves = [];
-	
-
-	newRound()
-}
-function newRound() {
-	
-	count++
-	displayEl.innerHTML = count
-	makeMove()
-}
-function makeMove() {
-	
-	gameMoves.push(poolColors[Math.floor(Math.random() * 4)])
-	logic()
-}
-function logic() {
-	
-	var i = 0;
-	var  interval = setInterval(function() {
-	    	console.log(gameMoves)
-	    	animateTiles(gameMoves[i])
-	    	i++
-	    	if(i >= gameMoves.length) {
-	    	clearInterval(interval)
-	    }
-      },800)
-	    playerMoves = []
-
+var simon = {
+	round: 0,
+	pool: ['red','blue','yellow','green'],
+	currentGame: [],
+	player: [],
+	strict: false,
+	sound: {
+	red : new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+	blue : new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+	yellow : new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+	green : new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
 	}
 
-function normalChecker(tileName) {
-	
-	playerMoves.push(tileName)
-	playerTurn(tileName)
-}
-function playerTurn(tile) {
-	
+} 
 
-		if(gameMoves[gameMoves.length - 1] !== playerMoves[playerMoves.length - 1]) {
-	   // if(JSON.stringify(gameMoves) !== JSON.stringify(playerMoves)) {
-		if(strictMode) {
-			no.play()
+
+function newGame() {
+	// clearGame() Funcion original
+	simon.currentGame = []
+	simon.round = 0
+
+	displayRound()
+}
+
+function displayRound() {
+	var displayEL = document.getElementById('display')
+	simon.round++
+	displayEL.innerHTML = simon.round
+	generateMove()
+}
+
+function generateMove() {
+	simon.currentGame.push(simon.pool[(Math.floor(Math.random()*4))])
+		console.log(simon.currentGame)
+	showMoves()
+}
+
+function showMoves() {
+	var i = 0,
+		interval = setInterval(function() {
+			playGame(simon.currentGame[i])
+			i++
+			if(i >= simon.currentGame.length) {
+				clearInterval(interval)
+			}
+		},600)
+
+		simon.player = []
+}
+
+function playGame(tile) {
+	tileEl = document.getElementById(tile)
+	tileEl.classList.add('hover-' + tile)
+	sound(tile)
+	setTimeout(function() {
+		tileEl.classList.remove('hover-' + tile)
+	},300)
+}
+
+function userClick(id) {
+	simon.player.push(id)
+	sound(id)
+	playerTurn(id)
+}
+
+function sound(tile) {
+	switch(tile) {
+		case 'red':
+		simon.sound.red.play()
+		break;
+		case 'blue':
+		simon.sound.blue.play()
+		break;
+		case 'yellow':
+		simon.sound.yellow.play()
+		break;
+		case 'green':
+		simon.sound.green.play()
+		break;					
+	}
+}
+
+function playerTurn(x) {
+
+	if(simon.player[simon.player.length - 1] !== simon.currentGame[simon.player.length - 1]) {
+		if(simon.strict){
+			// alert('Intentalo de nuevo desde el principio')
 			newGame()
 		} else {
-			no.play()
-			logic()
+			 alert('Te equivocaste, intentalo de nuevo')
+			showMoves()
 		}
 	} else {
-		if(gameMoves.length === playerMoves.length) {
-			if(count === 20) {
-				win.play()
-				newGame()
+
+		// sound(x)
+		var check = simon.player.length === simon.currentGame.length
+		if(check) {
+			if(simon.round == 20) {
+				 alert	('Ganaste')
+				 setTimeout(newGame(),3000)
 			} else {
-				newRound()
+
+				setTimeout(displayRound(),500)
 			}
 		}
 	}
 }
-function ready(fn) {
-	
-	if(document.readyState != 'loading'){
-		fn()
+
+function strict() {
+	if(simon.strict == false) {
+		simon.strict = true
+		alert('Strict mode on')
 	} else {
-		document.addEventListener('DOMContentLoaded',fn())
+		simon.strict = false
+		alert('Stric mode off')
 	}
-}
-function fn() {
-	
-	let start = document.getElementById('start')
-	displayEl.innerHTML = '__'
-	start.addEventListener('click',function() {
-		newGame()
-	})
-}
-function strictOn() {
-	
-	strictMode = true
 	newGame()
-
 }
-
-
-
-document.getElementById('on-off').addEventListener('click', function() {
-	start = true
-
-	if(start) {
-	
-	ready(fn)
-
-	}
-	start = false
-	// displayEl.innerHTML = ''
-
+// function on() {
+// 	var _switch = document.getElementById('on-off')
+// 	_switch.addEventListener('click',function(){
+// 		newGame()
+// 	})
+// }
+// on()
+document.getElementById('start').addEventListener('click',function(){
+	newGame()
 })
-
-
-	document.getElementById('red').addEventListener('click',function() {
-		animateTiles('red')
-		normalChecker('red')
-	})
-	document.getElementById('blue').addEventListener('click',function() {
-		animateTiles('blue')
-		normalChecker('blue')
-	})
-	document.getElementById('yellow').addEventListener('click',function() {
-		animateTiles('yellow')
-		normalChecker('yellow')
-	})
-	document.getElementById('green').addEventListener('click',function() {
-		animateTiles('green')
-		normalChecker('green')
-	})
-
-	document.getElementById('strict').addEventListener('click',function() {
-		swal({
-			title: 'Are you sure?',
-			text: 'You lose automatically if you get 1 key wrong',
-			type: 'warning',
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: 'Confirm',
-			closeOnConfirm: true,
-			html: false,
-
-		},function() {
-			strictOn()
-		})
-	})
+newGame()
