@@ -1,5 +1,6 @@
+
 var simon = {
-	count: 0,
+	round: 0,
 	pool: ['red','blue','yellow','green'],
 	currentGame: [],
 	player: [],
@@ -13,42 +14,56 @@ var simon = {
 
 } 
 
-function clearGame() {
-	simon.currentGame = []
-	simon.count = 0
-
-	addCount()
-}
 
 function newGame() {
 	// clearGame() Funcion original
 	simon.currentGame = []
-	simon.count = 0
+	simon.round = 0
 
-	addCount()
+	displayRound()
 }
-function strict() {
-	if(simon.strict == false) {
-		simon.strict = true
-		alert('Strict mode on')
-	} else {
-		simon.strict = false
-		alert('Stric mode off')
-	}
-	newGame()
+
+function displayRound() {
+	var displayEL = document.getElementById('display')
+	simon.round++
+	displayEL.innerHTML = simon.round
+	generateMove()
+}
+
+function generateMove() {
+	simon.currentGame.push(simon.pool[(Math.floor(Math.random()*4))])
+		console.log(simon.currentGame)
+	showMoves()
 }
 
 function showMoves() {
 	var i = 0,
-		moves = setInterval(function() {
+		interval = setInterval(function() {
 			playGame(simon.currentGame[i])
 			i++
 			if(i >= simon.currentGame.length) {
-				clearInterval(moves)
+				clearInterval(interval)
 			}
 		},600)
-		clearPlayer()
+
+		simon.player = []
 }
+
+function playGame(tile) {
+	tileEl = document.getElementById(tile)
+	tileEl.classList.add('hover-' + tile)
+	sound(tile)
+	setTimeout(function() {
+		tileEl.classList.remove('hover-' + tile)
+	},300)
+}
+
+function userClick(id) {
+	simon.player.push(id)
+	sound(id)
+	playerTurn(id)
+}
+
 function sound(tile) {
 	switch(tile) {
 		case 'red':
@@ -65,23 +80,7 @@ function sound(tile) {
 		break;					
 	}
 }
-function playGame(tile) {
-	tileEl = document.getElementById(tile)
-	tileEl.classList.add('hover-' + tile)
-	sound(tile)
-	setTimeout(function() {
-		tileEl.classList.remove('hover-' + tile)
-	},300)
-}
-function clearPlayer() {
-	simon.player = []
-}
 
-function addToPlayer(id) {
-	simon.player.push(id)
-	sound(id)
-	playerTurn(id)
-}
 function playerTurn(x) {
 
 	if(simon.player[simon.player.length - 1] !== simon.currentGame[simon.player.length - 1]) {
@@ -97,32 +96,26 @@ function playerTurn(x) {
 		// sound(x)
 		var check = simon.player.length === simon.currentGame.length
 		if(check) {
-			if(simon.count == 20) {
-				// alert('Ganaste')
+			if(simon.round == 20) {
+				 alert	('Ganaste')
+				 setTimeout(newGame(),3000)
 			} else {
 				// alert('siguiente Nivel')
 				// nextLevel()
-				addCount()
+				setTimeout(displayRound(),500)
 			}
 		}
 	}
 }
 
-function nextLevel() {
-	addCount()
+function strict() {
+	if(simon.strict == false) {
+		simon.strict = true
+		alert('Strict mode on')
+	} else {
+		simon.strict = false
+		alert('Stric mode off')
+	}
+	newGame()
 }
 
-function generateMove() {
-	simon.currentGame.push(simon.pool[(Math.floor(Math.random()*4))])
-		console.log(simon.currentGame)
-	showMoves()
-}
-
-function addCount() {
-	var displayEL = document.getElementById('display')
-	simon.count++
-	displayEL.innerHTML = simon.count
-	generateMove()
-}
-
-newGame()
