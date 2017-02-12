@@ -17,10 +17,8 @@ var simon = {
 
 
 function newGame() {
-	// clearGame() Funcion original
 	simon.currentGame = []
 	simon.round = 0
-
 	displayRound()
 }
 
@@ -35,6 +33,7 @@ function displayRound() {
 function generateMove() {
 	simon.currentGame.push(simon.pool[(Math.floor(Math.random()*4))])
 		console.log(simon.currentGame)
+
 	showMoves()
 }
 
@@ -88,21 +87,16 @@ function playerTurn(x) {
 
 	if(simon.player[simon.player.length - 1] !== simon.currentGame[simon.player.length - 1]) {
 		if(simon.strict){
-			// alert('Intentalo de nuevo desde el principio')
-			// newGame()
 			simon.status.innerText = 'Incorrecto'
 			setTimeout(function(){simon.status.innerText = ''},1000)
 			setTimeout(newGame(),1100)
 		} else {
-/*			 alert('Te equivocaste, intentalo de nuevo')
-			showMoves()*/
 			simon.status.innerText = 'Incorrecto'
 			setTimeout(function(){simon.status.innerText = ''},1000)
 			setTimeout(showMoves(),100)
 		}
 	} else {
 
-		// sound(x)
 		var check = simon.player.length === simon.currentGame.length
 		if(check) {
 			if(simon.round == 20) {
@@ -111,6 +105,7 @@ function playerTurn(x) {
 				 setTimeout(newGame(),3000)
 			} else {
 				simon.status.innerText = 'Sig. nivel'
+	
 				setTimeout(function(){simon.status.innerText = ''},500)
 				setTimeout(displayRound(),500)
 			}
@@ -128,20 +123,7 @@ function strict() {
 	}
 	newGame()
 }
-// function on() {
-// 	var _switch = document.getElementById('on-off')
-// 	_switch.addEventListener('click',function(){
-// 		newGame()
-// 	})
-// }
-// on()
-/*document.getElementById('start').addEventListener('click',function(){
-	newGame()
-})*/
-// newGame()
 
-// document.getElementById('status').innerHTML = ''
-// console.log(simon.status)
 function on() {
 	var el = document.getElementById('on-off')
 	el.addEventListener('click',function(){
@@ -169,4 +151,3 @@ function buttons() {
 		})
 }
 
-// on()

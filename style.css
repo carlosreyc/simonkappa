@@ -20,6 +20,14 @@
   align-self: center;
   border: 1px solid #000;
 }
+.noclicks {
+  display: none;
+  z-index: 2;
+  /*background-color: #000;*/
+  width: 100vw;
+  height: 100vh;
+  position: absolute
+}
 p {
   text-align: center;
 
@@ -161,7 +169,7 @@ div.strict-btn + p {
   margin: 0 auto;
   flex-wrap: wrap;  
   position: relative;
-  border: 2px solid goldenrod;
+  
 }
 .status {
   position: absolute;
