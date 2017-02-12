@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,12 +17,13 @@
 
 <body>
     <h1>Simon Game</h1>
+    <p class="oculto" id="status">Perdiste</p>
     <div class="container" id="simonContainer">
 
-        <div class="color red" id="red"> </div>
-        <div class="color blue" id="blue"> </div>
-        <div class="color yellow" id="yellow"> </div>
-        <div class="color green" id="green"> </div>
+        <div class="color red" id="red" onclick="userClick(this.id)" > </div>
+        <div class="color blue" id="blue" onclick="userClick(this.id)"> </div>
+        <div class="color yellow" id="yellow"onclick="userClick(this.id)"> </div>
+        <div class="color green" id="green"onclick="userClick(this.id)"> </div>
     </div>
     <div class="container-bottom">
         <div class="wrapper">
@@ -47,7 +49,7 @@
         </div>
 
     </div>
-    <script src="script.js"></script>
+    <script src="scriptOOP.js"></script>
     
 </body>
 
