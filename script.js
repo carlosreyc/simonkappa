@@ -89,7 +89,10 @@ function playerTurn(x) {
 	if(simon.player[simon.player.length - 1] !== simon.currentGame[simon.player.length - 1]) {
 		if(simon.strict){
 			// alert('Intentalo de nuevo desde el principio')
-			newGame()
+			// newGame()
+			simon.status.innerText = 'Incorrecto'
+			setTimeout(function(){simon.status.innerText = ''},1000)
+			setTimeout(newGame(),1100)
 		} else {
 /*			 alert('Te equivocaste, intentalo de nuevo')
 			showMoves()*/
@@ -132,10 +135,38 @@ function strict() {
 // 	})
 // }
 // on()
-document.getElementById('start').addEventListener('click',function(){
+/*document.getElementById('start').addEventListener('click',function(){
 	newGame()
-})
-newGame()
+})*/
+// newGame()
 
 // document.getElementById('status').innerHTML = ''
-console.log(simon.status)
+// console.log(simon.status)
+function on() {
+	var el = document.getElementById('on-off')
+	el.addEventListener('click',function(){
+		buttons()
+	})
+}
+function buttons() {
+	var _start = document.getElementById('start'),
+		_strict = document.getElementById('strict')
+
+		_start.addEventListener('click',function(){
+			newGame()
+		})
+		_strict.addEventListener('click',function(){
+			if(!simon.strict){
+				simon.strict = true
+				newGame()
+				console.log('activado',simon.strict)
+				
+			} else {
+				simon.strict = false
+				console.log('desactivado',simon.strict)
+				
+			}
+		})
+}
+
+// on()
