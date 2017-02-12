@@ -119,3 +119,4 @@ function strict() {
 	newGame()
 }
 
+newGame()
