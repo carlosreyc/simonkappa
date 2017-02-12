@@ -142,8 +142,17 @@ div.strict-btn + p {
   position: relative;
 }
 
+/*For devices max width 500px*/
+@media only screen and (max-width: 479px) {
+.color {
 
-
+  width: 100px;
+  height: 100px;
+  flex-basis: 100px;
+  align-self: center;
+  border: 1px solid #000;
+}
+}
 
 
 
